@@ -1,5 +1,7 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import  {mens_shirts} from "../constants/allProducts"
+
 const data = [
   { id: '1', title: 'Item One' },
   { id: '2', title: 'Item Two' },
@@ -22,10 +24,12 @@ const data = [
   { id: '19', title: 'Item Three' },
    { id: '20', title: 'Item four' },
 ];
-const Showallproducts = () => {
+
+const ShowProducts = () => {
+  console.log(mens_shirts,"menshirts")
   return (
     <FlatList 
-    data={data}
+    data={mens_shirts}
     numColumns={2}
   showsVerticalScrollIndicator={false}
     columnWrapperStyle={{ justifyContent: 'space-between', paddingHorizontal: 10 }} // optional styling
@@ -33,12 +37,18 @@ const Showallproducts = () => {
     keyExtractor={(item)=>item.id}
     renderItem={({item})=>(
       <View className='border-[2px] border-blue-500 h-[250px] w-[48%%]  items-center rounded-lg mb-[10px]'>
+          <Image 
+          source={{uri:item.images[0]}}
+          style={{height:40,width:40,borderColor:"red"}}
+          resizeMode='cover'  />
+          
           <Text>{item.id}</Text>
+        
       </View>
     )}/>
   )
 }
 
-export default Showallproducts
+export default ShowProducts
 
 const styles = StyleSheet.create({})

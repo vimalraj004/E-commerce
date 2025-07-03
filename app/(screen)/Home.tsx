@@ -12,7 +12,7 @@ import {
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import Showallproducts from "../components/Showallproducts";
+import Showallproducts from "../components/ShowProducts";
 
 const Home = () => {
   return (
