@@ -1,32 +1,18 @@
-import React from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import  {mens_shirts} from "../constants/allProducts"
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import React, { useState } from 'react';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { mens_shirts } from "../../constants/allProducts";
 
-const data = [
-  { id: '1', title: 'Item One' },
-  { id: '2', title: 'Item Two' },
-  { id: '3', title: 'Item Three' },
-   { id: '4', title: 'Item four' },
-     { id: '5', title: 'Item One' },
-  { id: '6', title: 'Item Two' },
-  { id: '7', title: 'Item Three' },
-   { id: '8', title: 'Item four' },
-     { id: '9', title: 'Item One' },
-  { id: '10', title: 'Item Two' },
-  { id: '11', title: 'Item Three' },
-   { id: '12', title: 'Item four' },
-     { id: '13', title: 'Item One' },
-  { id: '14', title: 'Item Two' },
-  { id: '15', title: 'Item Three' },
-   { id: '16', title: 'Item four' },
-     { id: '17', title: 'Item One' },
-  { id: '18', title: 'Item Two' },
-  { id: '19', title: 'Item Three' },
-   { id: '20', title: 'Item four' },
-];
 
 const ShowProducts = () => {
-  console.log(mens_shirts,"menshirts")
+  const [liked,setLiked] = useState<{[key:string]:boolean}>({})
+  const toggleLiked =(id:string)=>{
+    setLiked((preval)=>({
+      ...preval,
+      [id]:!preval[id]
+    }))
+
+  }
   return (
     <FlatList 
     data={mens_shirts}
@@ -37,10 +23,16 @@ const ShowProducts = () => {
     keyExtractor={(item)=>item.id}
     renderItem={({item})=>(
       <View className='border-[2px] border-blue-500 h-[250px] w-[48%%]  items-center rounded-lg mb-[10px]'>
-          <Image 
+        <View className=' w-[100%] h-[60%]'>
+           <Image 
           source={{uri:item.images[0]}}
-          style={{height:40,width:40,borderColor:"red"}}
+          style={{height:145,width:180,borderRadius:5 }}
           resizeMode='cover'  />
+          <TouchableOpacity className=' absolute right-1 top-1 ' onPress={()=>toggleLiked(item.id)}>
+            <FontAwesome name="heart" size={24} color={liked[item.id] ? 'red' : 'black'} />
+          </TouchableOpacity>
+        </View>
+         
           
           <Text>{item.id}</Text>
         
