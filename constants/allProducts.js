@@ -270,7 +270,8 @@ export const options_icons = [{
   id:"2",
   title:"Pants",
   images:[
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0LsbTtJyySHC7F0Ql525xOhQZYcs-nl-wzg&s"  ]
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO5AUCmsGX2rrXt6HvLDYIZzckfBXC4l9y0g&s"
+]
 },
 {
   id:"3",

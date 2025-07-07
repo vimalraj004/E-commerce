@@ -8,7 +8,7 @@ const ShowOptions = () => {
       data={options_icons}
       numColumns={1}
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{paddingHorizontal:10,justifyContent:'space-between'}}
+      contentContainerStyle={{paddingHorizontal:15,justifyContent:'space-between'}}
       keyExtractor={(item) => item.id}
       horizontal={true}
       renderItem={({ item }) => (
