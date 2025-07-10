@@ -1,6 +1,6 @@
 import { AppRegistry } from "react-native";
 import Home from "./app/(screen)/Home";
-import appjson from "./app.json"
+import appjson from "./on";
 
 const appName = appjson.expo.name
 

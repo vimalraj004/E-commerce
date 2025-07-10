@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { options_icons } from '../../constants/allProducts'
 
 const ShowOptions = () => {
@@ -13,11 +13,13 @@ const ShowOptions = () => {
       horizontal={true}
       renderItem={({ item }) => (
         <View className=' mr-[50px]'>
-          
-          <Image
+          <TouchableOpacity >
+             <Image
           source={{ uri: item.images[0] }} 
           style={{height:45,width:50,padding:10}}
           resizeMode='cover'/>
+          </TouchableOpacity>
+         
           <Text className='pl-[8px]'>{item.title}</Text>
         </View>
       )}
