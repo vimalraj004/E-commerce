@@ -1,5 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FlatList,
   Image,
@@ -10,18 +10,37 @@ import {
 } from "react-native";
 import { mens_shirts } from "../../constants/allProducts";
 import AnimatedStarRatings from "./AnimatedStarRatings";
+import { useTabBar } from "../../context/TabBarProvider";
 
 const ShowProducts = () => {
   const [liked, setLiked] = useState<{ [key: string]: boolean }>({});
+  const scrolloffset = useRef(0);
+  const { setVisible } = useTabBar();
   const toggleLiked = (id: string) => {
     setLiked((preval) => ({
       ...preval,
       [id]: !preval[id],
     }));
   };
+  const handleScroll = (event: any) => {
+    try {
+      const currentOffSet = event.nativeEvent.contentOffset.y;
+      const direction = currentOffSet > scrolloffset.current ? "down" : "up";
+      if (direction === "down") {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      scrolloffset.current = currentOffSet;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <FlatList
       data={mens_shirts}
+      onScroll={handleScroll}
+      scrollEventThrottle={12}
       numColumns={2}
       showsVerticalScrollIndicator={false}
       columnWrapperStyle={{

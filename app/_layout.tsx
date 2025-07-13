@@ -1,10 +1,13 @@
 import { Stack } from "expo-router";
-import "./global.css" 
+import "./global.css";
+import TabBarProvider from "@/context/TabBarProvider";
 export default function RootLayout() {
-  return <Stack>
-    <Stack.Screen
-    name="(screen)"
-    options={{headerShown:false}}
-     />
-  </Stack>;
+  return (
+    <TabBarProvider>
+      <Stack>
+        <Stack.Screen name="(screen)" options={{ headerShown: false }} />
+      </Stack>
+      
+    </TabBarProvider>
+  );
 }

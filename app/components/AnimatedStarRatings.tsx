@@ -3,7 +3,7 @@ import React from 'react'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 
-const AnimatedStarRatings = ({ratting}:{ratting:number}) => {
+const AnimatedStarRatings = React.memo(({ratting}:{ratting:number}) => {
     const star =[1,2,3,4,5]
     const renderstart = (index:number)=>{
        
@@ -40,10 +40,10 @@ const AnimatedStarRatings = ({ratting}:{ratting:number}) => {
     }
   return (
     <View className='flex flex-row justify-center items-center'>
-     {star.map((index)=>renderstart(index))}
+     {star.map((val,index)=>renderstart(index))}
     </View>
   )
-}
+})
 
 export default AnimatedStarRatings
 

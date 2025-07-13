@@ -1,12 +1,26 @@
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Animated, Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useRef } from "react";
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useTabBar } from "@/context/TabBarProvider";
 
 const _layout = () => {
+  // const translateY = useRef(new Animated.Value(0)).current
+  const {visible} = useTabBar()
+
+  // useEffect(()=>{
+  //   Animated.timing(translateY,{
+  //     toValue:visible?0:100,
+  //     duration:1000,
+  //     useNativeDriver:true,
+  //   }).start()
+  // },[visible])
+
   return (
-    <Tabs
+
+
+         <Tabs
       screenOptions={{
         tabBarShowLabel: false,
         tabBarIconStyle:{
@@ -17,14 +31,15 @@ const _layout = () => {
             alignItems:"center",
             marginTop:10,
             // borderColor:"green",
-            borderWidth:2
+            borderWidth:2,
+            
 
         },
         tabBarStyle:{
           backgroundColor:"black",
           borderRadius:50,
           marginHorizontal:20,
-          marginBottom:30,
+          marginBottom: visible?30:-65,
           height:70,
           position:"absolute",
           overflow:"hidden",
@@ -75,6 +90,9 @@ const _layout = () => {
         }}
       />
     </Tabs>
+
+   
+
   );
 };
 
